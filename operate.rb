@@ -7,7 +7,7 @@ class User < Interface
   include Function
   def index
     puts "何か用ですか？(数字を入力してください)"
-    puts @user_index.values
+    puts @user_menu.values
     puts "【投入金額：#{@@vending.slot_money}円】"
     get_int
     number = @int

@@ -71,7 +71,7 @@ class Interface
     return puts "商品がありません" if @@vending.stock.length.zero?
     drink_menu_select
     return puts "キャンセルしました" if @drink.zero?
-      if @@vending.stock[@drink-1][2] == 0 || @@vending.stock[@drink-1][1] > @@vending.slot_money
+      if @@vending.stock[@drink-1][2].zero? || @@vending.stock[@drink-1][1] > @@vending.slot_money
         puts "購入できません"
         return buy
       end
