@@ -16,7 +16,7 @@ Ruby 2.6.5, 3.0.1
 $ git clone git@github.com:YuriAkita/vending_program.git
 $ cd vending_project
 $ irb
-$ require 'フルパスコピー'
+$ require 'operate.rbフルパスコピー'
 # ユーザー操作をする場合(0.やめる 1.お金を入れる 2.商品を買う)
 $ user = User.new
 $ user.index
