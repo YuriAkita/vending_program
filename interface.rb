@@ -26,12 +26,12 @@ class Interface
   end
 
   def get_name
-      @name = gets.chomp
-      if @name.strip.empty?
-       puts "何も入力されていません"
-       return get_name
-      end
-      @name
+    @name = gets.chomp
+    if @name.strip.empty?
+      puts "何も入力されていません"
+      return get_name
+    end
+    @name
   end
 
   def drink_menu_select
