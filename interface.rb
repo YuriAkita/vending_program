@@ -3,16 +3,16 @@ class Interface
   MONEY = [10, 50, 100, 500, 1000].freeze
   def initialize
       @@vending ||= Vending.new
-      admin_menu_box
-      user_menu_box
+      admin_menu
+      user_menu
   end
 
-  def admin_menu_box
-    @admin_index = { m00:'0.やめる', m11: '1.商品補充', m12: '2.商品追加', m13: '3.商品撤去', m14: '4.在庫確認', m15: '5.売上確認' }
+  def admin_menu
+    @admin_menu = { m00:'0.やめる', m11: '1.商品補充', m12: '2.商品追加', m13: '3.商品撤去', m14: '4.在庫確認', m15: '5.売上確認' }
   end
 
-  def user_menu_box
-    @user_index = { m00: '0.やめる', m01: '1.お金を入れる', m02: '2.商品を買う' }
+  def user_menu
+    @user_menu = { m00: '0.やめる', m01: '1.お金を入れる', m02: '2.商品を買う' }
   end
 
   def get_int
@@ -53,7 +53,7 @@ class Interface
   end
 
   def slot_money #m01
-    puts @user_index[:m01]
+    puts @user_menu[:m01]
     puts "お金を入れてください(10,50,100,500,1000)"
     money = get_int
     if MONEY.include?(money)
@@ -66,7 +66,7 @@ class Interface
   end
 
   def buy #m02
-    puts @user_index[:m02]
+    puts @user_menu[:m02]
     puts "所持金#{@@vending.slot_money}"
     return puts "商品がありません" if @@vending.stock.length.zero?
     drink_menu_select
@@ -86,7 +86,7 @@ class Interface
   end
 
   def add_drink #m11
-    puts @admin_index[:m11]
+    puts @admin_menu[:m11]
     drink_menu_select
     return puts "キャンセルしました" if @drink.zero?
     puts "本数入力"
@@ -96,7 +96,7 @@ class Interface
   end
 
   def new_drink #m12
-    puts @admin_index[:m12]
+    puts @admin_menu[:m12]
     puts "商品名を追加してください"
     name = get_name
     puts "値段を入力してください"
@@ -108,7 +108,7 @@ class Interface
   end
 
   def remove_drink #m13
-    puts @admin_index[:m13]
+    puts @admin_menu[:m13]
     return puts "商品がありません" if @@vending.stock.length.zero?
     drink_menu_select
     @drink = @int
@@ -119,12 +119,12 @@ class Interface
   end
 
   def drink_menu #m14
-    puts @admin_index[:m14]
+    puts @admin_menu[:m14]
     stock_status
   end
 
   def sales #m15
-    puts @admin_index[:m15]
+    puts @admin_menu[:m15]
     puts "残金：#{@@vending.slot_money}円"
     puts "売上：#{@@vending.sales_money}円"
   end
