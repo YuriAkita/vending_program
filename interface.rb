@@ -15,12 +15,12 @@ class Interface
     @user_menu = { m00: '0.やめる', m01: '1.お金を入れる', m02: '2.商品を買う' }
   end
 
-  def get_int
+  def check_int
     @int = gets
     waiting
-    unless @int =~ /^[0-9]+$/ then
+    unless @int =~ /^[0-9]+$/
       puts "不正な値が入力されました。もう一度入力してください"
-      return get_int
+      return check_int
     end
     @int = @int.to_i
   end
@@ -37,7 +37,7 @@ class Interface
   def drink_menu_select
     puts "番号を入力してください。0で戻る"
     stock_status
-    get_int
+    check_int
     @drink = @int
     if @@vending.stock.length < @int
       puts "選択した位置に商品がありません"
@@ -55,7 +55,7 @@ class Interface
   def slot_money #m01
     puts @user_menu[:m01]
     puts "お金を入れてください(10,50,100,500,1000)"
-    money = get_int
+    money = check_int
     if MONEY.include?(money)
       puts "#{money}円入れました"
       @@vending.slot_money_push(money)
@@ -90,7 +90,7 @@ class Interface
     drink_menu_select
     return puts "キャンセルしました" if @drink.zero?
     puts "本数入力"
-    stock = get_int
+    stock = check_int
     @@vending.add_push(@drink,stock)
     puts "在庫を追加しました。#{@@vending.stock[@drink-1][0]}の在庫数：#{@@vending.stock[@drink-1][2]}本"
   end
@@ -100,9 +100,9 @@ class Interface
     puts "商品名を追加してください"
     name = get_name
     puts "値段を入力してください"
-    price = get_int
+    price = check_int
     puts "個数を入力してください"
-    stock = get_int
+    stock = check_int
     @@vending.new_push(name,price,stock)
     puts "『#{name}』を『#{price}円』で『#{stock}本』追加しました。"
   end

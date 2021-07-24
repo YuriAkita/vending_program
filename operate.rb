@@ -9,7 +9,7 @@ class User < Interface
     puts "何か用ですか？(数字を入力してください)"
     puts @user_menu.values
     puts "【投入金額：#{@@vending.slot_money}円】"
-    get_int
+    check_int
     number = @int
     case number.to_i
     when 1 then
@@ -32,8 +32,8 @@ class Admin < Interface
   include Function
   def admin_index
     puts '管理者メニュー(*)'
-    puts @admin_index.values
-    get_int
+    puts @admin_menu.values
+    check_int
     number = @int
     case number
     when 1 then
