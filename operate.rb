@@ -1,8 +1,8 @@
+require './function'
+require './interface'
+require './vending'
 
-require './function.rb'
-require './interface.rb'
-require './vending.rb'
-
+# test
 class User < Interface
   include Function
   def index
@@ -12,11 +12,11 @@ class User < Interface
     check_int
     number = @int
     case number.to_i
-    when 1 then
+    when 1
       slot_money
-    when 2 then
+    when 2
       buy
-    when 0 then
+    when 0
       return_money
       return puts "さようなら"
     else
@@ -28,25 +28,26 @@ class User < Interface
   end
 end
 
+# test
 class Admin < Interface
   include Function
   def admin_index
-    puts '管理者メニュー(*)'
+    puts "管理者メニュー(*)"
     puts @admin_menu.values
     check_int
     number = @int
     case number
-    when 1 then
+    when 1
       add_drink
-    when 2 then
+    when 2
       new_drink
-    when 3 then
+    when 3
       remove_drink
-    when 4 then
+    when 4
       drink_menu
-    when 5 then
+    when 5
       sales
-    when 0 then
+    when 0
       return puts "さようなら"
     else
       puts "その番号はありません"

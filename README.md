@@ -1,4 +1,4 @@
-# 自動販売機システム
+# 自動販売機プログラム
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80203224/126857431-813988c4-942d-4e1c-b89a-cf95f92fb809.png" width="400px"></p>
 

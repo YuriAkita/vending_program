@@ -1,3 +1,4 @@
+# test
 module Function
   def waiting
     sleep 0.2
