@@ -1,4 +1,4 @@
-# test
+# ユーザーの操作とVending機能をつなぐ箇所
 class Interface
   MONEY = [10, 50, 100, 500, 1000].freeze
   def initialize

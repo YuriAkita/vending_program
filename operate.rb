@@ -2,7 +2,7 @@ require './function'
 require './interface'
 require './vending'
 
-# test
+# ユーザーが行う自動販売機操作
 class User < Interface
   include Function
   def index
@@ -28,7 +28,7 @@ class User < Interface
   end
 end
 
-# test
+# 管理者ユーザーが行う操作
 class Admin < Interface
   include Function
   def admin_index

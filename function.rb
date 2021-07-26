@@ -1,4 +1,4 @@
-# test
+# 表示の装飾
 module Function
   def waiting
     sleep 0.2
