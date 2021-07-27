@@ -75,8 +75,19 @@ class Interface
       puts "購入できません"
       return buy
     end
+    @drink_price = @@vending.stock[@drink - 1][1]
+    stock_money_check
+    return puts "ごめんなさい、釣り銭切れです" if @check_money != 0
     @@vending.buy_push(@drink)
     puts "#{@@vending.stock[@drink - 1][0]}を買いました"
+  end
+
+  def stock_money_check
+    @check_money = @@vending.slot_money - @drink_price
+    MONEY.reverse_each do |money|
+      count = [@check_money / money, @@vending.stock_money[:"m#{money}"]].min
+      @check_money -= money * count
+    end
   end
 
   def random_buy
@@ -142,5 +153,14 @@ class Interface
     puts @admin_menu[:m15]
     puts "残金：#{@@vending.slot_money}円"
     puts "売上：#{@@vending.sales_money}円"
+  end
+
+  def check_stock_money
+    puts @admin_menu[:m16]
+    puts "1000円：#{@@vending.stock_money[:m1000]}枚"
+    puts "500円：#{@@vending.stock_money[:m500]}枚"
+    puts "100円：#{@@vending.stock_money[:m100]}枚"
+    puts "50円：#{@@vending.stock_money[:m50]}枚"
+    puts "10円：#{@@vending.stock_money[:m10]}枚"
   end
 end

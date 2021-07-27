@@ -1,17 +1,20 @@
 # modelを意識したクラス。自動販売機の読み書きを行う中枢。
 class Vending
-  attr_reader :slot_money, :sales_money, :stock, :random_stock
+  attr_reader :slot_money, :sales_money, :stock, :stock_money, :random_stock
 
   def initialize
-    @slot_money = 150
+    @slot_money = 0
     @sales_money = 0
-    @stock = [["コーラ", 120, 0], ["水", 150, 1], ["レッドブル", 200, 7]]
+    @stock_money = { m10: 0, m50: 0, m100: 0, m500: 0, m1000: 0}
+    @stock = [["コーラ", 120, 5], ["水", 150, 5], ["レッドブル", 200, 5]]
     @random_stock = [["コーラ", 120, 5], ["ダイエットコーラ", 120, 5], ["お茶", 120, 5]]
   end
 
   # m01（お金を入れる）
   def slot_money_push(money)
     @slot_money += money
+    money = :"m#{money}"
+    @stock_money[money] += 1
   end
 
   # m02（商品を買う）
