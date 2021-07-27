@@ -9,8 +9,7 @@ class User < Interface
     puts "何か用ですか？(数字を入力してください)"
     puts @user_menu.values
     puts "【投入金額：#{@@vending.slot_money}円】"
-    check_int
-    number = @int
+    number = check_int
     case number.to_i
     when 1
       slot_money
@@ -36,8 +35,7 @@ class Admin < Interface
   def admin_index
     puts "管理者メニュー(*)"
     puts @admin_menu.values
-    check_int
-    number = @int
+    number = check_int
     case number
     when 1
       add_drink
