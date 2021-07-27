@@ -49,6 +49,8 @@ class Admin < Interface
       drink_menu
     when 5
       sales
+    when 6
+      check_stock_money
     when 0
       return puts "さようなら"
     else

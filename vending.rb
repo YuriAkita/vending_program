@@ -5,7 +5,7 @@ class Vending
   def initialize
     @slot_money = 0
     @sales_money = 0
-    @stock_money = { m10: 0, m50: 0, m100: 0, m500: 0, m1000: 0}
+    @stock_money = { m10: 10, m50: 10, m100: 10, m500: 10, m1000: 10}
     @stock = [["コーラ", 120, 5], ["水", 150, 5], ["レッドブル", 200, 5]]
     @random_stock = [["コーラ", 120, 5], ["ダイエットコーラ", 120, 5], ["お茶", 120, 5]]
   end
