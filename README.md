@@ -41,3 +41,4 @@ $ admin.admin_index
 <img width="1369" alt="スクリーンショット 2021-07-24 13 54 54" src="https://user-images.githubusercontent.com/80203224/126857802-f4fa50bc-e869-4605-be2d-af504c1f4011.png">
 
 ## 変更点
+![自販機プログラム2](https://user-images.githubusercontent.com/80203224/127125101-1a57e534-e60a-4e9c-9003-724db6552392.png)
