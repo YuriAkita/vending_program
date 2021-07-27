@@ -31,7 +31,7 @@ class Vending
     @sales_money += @random_stock[drink - 1][1]
   end
 
-  #（お金を返す）
+  # （お金を返す）
   def return_push
     @slot_money = 0
   end
