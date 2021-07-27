@@ -160,11 +160,8 @@ class Interface
   end
 
   def check_stock_money
-    puts @admin_menu[:m16]
-    puts "1000円：#{@@vending.stock_money[:m1000]}枚"
-    puts "500円：#{@@vending.stock_money[:m500]}枚"
-    puts "100円：#{@@vending.stock_money[:m100]}枚"
-    puts "50円：#{@@vending.stock_money[:m50]}枚"
-    puts "10円：#{@@vending.stock_money[:m10]}枚"
+    pputs @admin_menu[:m16]
+    MONEY.reverse_each do |money|
+      puts "#{money}円： #{@@vending.stock_money[:"m#{money}"]}枚
   end
 end
