@@ -163,5 +163,6 @@ class Interface
     pputs @admin_menu[:m16]
     MONEY.reverse_each do |money|
       puts "#{money}円： #{@@vending.stock_money[:"m#{money}"]}枚"
+    end
   end
 end
