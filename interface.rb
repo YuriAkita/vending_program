@@ -99,6 +99,9 @@ class Interface
     if @@vending.random_stock[@drink - 1][2].zero?
       return random_buy
     else
+      @drink_price = @@vending.random_stock[@drink - 1][1]
+      stock_money_check
+      return puts "ごめんなさい、釣り銭切れです" if @check_money != 0
       @@vending.random_buy_push(@drink)
       puts "#{@@vending.random_stock[@drink - 1][0]}を購入しました。"
     end
