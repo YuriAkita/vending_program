@@ -17,6 +17,11 @@ class Vending
     @stock_money[money] += 1
   end
 
+  def remobe_stock_money(money, count)
+    money = :"m#{money}"
+    @stock_money[money] -= count
+  end
+
   # m02（商品を買う）
   def buy_push(number)
     @stock[number - 1][2] -= 1

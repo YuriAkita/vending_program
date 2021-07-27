@@ -87,6 +87,7 @@ class Interface
     MONEY.reverse_each do |money|
       count = [@check_money / money, @@vending.stock_money[:"m#{money}"]].min
       @check_money -= money * count
+      @@vending.remobe_stock_money(money, count)
     end
   end
 
