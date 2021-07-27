@@ -91,12 +91,15 @@ class Interface
   end
 
   def random_buy
-    puts @user_menu[:m03]
     return puts "ランダムで飲み物を買う場合は120円必要です。" if @@vending.slot_money < 120
+
+    if @@vending.random_stock[0][2].zero? && @@vending.random_stock[1][2].zero? && @@vending.random_stock[2][2].zero?
+      return puts "全ての在庫がありません。"
+    end
 
     @drink = (1..@@vending.random_stock.size).to_a.sample
     if @@vending.random_stock[@drink - 1][2].zero?
-      puts "#{@@vending.random_stock[@drink - 1][0]}の在庫がありません。"
+      return random_buy
     else
       @@vending.random_buy_push(@drink)
       puts "#{@@vending.random_stock[@drink - 1][0]}を購入しました。"
