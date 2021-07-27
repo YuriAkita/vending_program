@@ -16,6 +16,8 @@ class User < Interface
       slot_money
     when 2
       buy
+    when 3
+      random_buy
     when 0
       return_money
       return puts "さようなら"

@@ -12,7 +12,7 @@ class Interface
   end
 
   def user_menu
-    @user_menu = { m00: "0.やめる", m01: "1.お金を入れる", m02: "2.商品を買う" }
+    @user_menu = { m00: "0.やめる", m01: "1.お金を入れる", m02: "2.商品を買う", m03: "3.ランダムで飲み物を買う" }
   end
 
   def check_int
@@ -37,13 +37,11 @@ class Interface
   def drink_menu_select
     puts "番号を入力してください。0で戻る"
     stock_status
-    check_int
-    @drink = @int
-    if @@vending.stock.length < @int
+    @drink = check_int
+    if @@vending.stock.length < @drink
       puts "選択した位置に商品がありません"
       return drink_menu_select
     end
-    @int
   end
 
   def stock_status
@@ -81,6 +79,19 @@ class Interface
     puts "#{@@vending.stock[@drink - 1][0]}を買いました"
   end
 
+  def random_buy
+    puts @user_menu[:m03]
+    return puts "ランダムで飲み物を買う場合は120円必要です。" if @@vending.slot_money < 120
+
+    @drink = (1..@@vending.random_stock.size).to_a.sample
+    if @@vending.random_stock[@drink - 1][2].zero?
+      puts "#{@@vending.random_stock[@drink - 1][0]}の在庫がありません。"
+    else
+      @@vending.random_buy_push(@drink)
+      puts "#{@@vending.random_stock[@drink - 1][0]}を購入しました。"
+    end
+  end
+
   def return_money
     puts "おつりです#{@@vending.slot_money}円"
     @@vending.return_push
@@ -115,7 +126,6 @@ class Interface
     return puts "商品がありません" if @@vending.stock.length.zero?
 
     drink_menu_select
-    @drink = @int
     return puts "キャンセルしました" if @drink.zero?
 
     drink_name = @@vending.stock[@drink - 1][0]
