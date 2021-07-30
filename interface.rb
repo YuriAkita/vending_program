@@ -64,6 +64,16 @@ class Interface
   end
 
   def buy
+    # 購入できるか確認する
+    if derink_stock.byable?
+      # 購入する
+      drink_stock.bye
+      puts '購購入しました'
+    else
+      puts ''
+    end
+
+
     puts @user_menu[:m02]
     puts "所持金#{@@vending.slot_money}"
     return puts "商品がありません" if @@vending.stock.length.zero?
